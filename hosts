@@ -1,5 +1,5 @@
 [webserver]
-ws01 ansible_host=<target-host-ip> ansible_user=root ansible_ssh_private_key_file=<ssh-key-file>
-[webserver:vars]
-ansible_ssh_common_args='-o StrictHostKeyChecking=no -o ProxyCommand="ssh -W %h:%p -q root@<jump-server-ip> -i <ssh-key-file> -o StrictHostKeyChecking=no -o ConnectTimeout=60s"'
-ansible_timeout=60
+ws01 ansible_host=<web-host-ip> ansible_user=root ansible_ssh_private_key_file=<ssh-key-file>
+[dbserver]
+dbs01 ansible_host=<db-host-ip> ansible_user=root ansible_ssh_private_key_file=<ssh-key-file>
+
