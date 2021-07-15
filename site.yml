@@ -24,7 +24,7 @@
 
     - name: Query index page for application
       uri:
-        url: http://localhost/index.php
+        url: http://localhost/index.html
         return_content: yes
       register: Output
     
