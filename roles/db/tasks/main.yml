@@ -36,13 +36,13 @@
      - libselinux-python
      - libsemanage-python
   
-  - name: Configure SELinux to start mysql on any port
-    seboolean:
-      name: mysql_connect_any
-      state: true
-      persistent: yes
-    when: sestatus.rc != 0
-    ignore_errors: yes
+#  - name: Configure SELinux to start mysql on any port
+#    seboolean:
+#      name: mysql_connect_any
+#      state: true
+#      persistent: yes
+#    when: sestatus.rc != 0
+#    ignore_errors: yes
   
   - name: Create Mysql configuration file
     template:
@@ -57,14 +57,14 @@
       state: started
       enabled: yes
   
-  - name: insert iptables rule
-    lineinfile:
-      dest: /etc/sysconfig/iptables
-      state: present
-      regexp: "{{ mysql_port }}"
-      insertafter: "^:OUTPUT "
-      line: "-A INPUT -p tcp  --dport 3306 -j  ACCEPT"
-    notify: restart iptables
+#  - name: insert iptables rule
+#    lineinfile:
+#      dest: /etc/sysconfig/iptables
+#      state: present
+#      regexp: "{{ mysql_port }}"
+#      insertafter: "^:OUTPUT "
+#      line: "-A INPUT -p tcp  --dport 3306 -j  ACCEPT"
+#    notify: restart iptables
   
   - name: Create Application DB User
     mysql_user:
